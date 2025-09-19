@@ -1,0 +1,19 @@
+{%extends "base.html"%}
+
+{%block title%}MY Car {% endblock%}
+
+<p>Hello,{{ user. username }}, form our html page!</p>
+
+{%block content%}
+
+<ul>
+    {%for car in cars%}
+    <li>{car}}, added by: <a href="{% url 'cars_by_user' user_id=car.created_by.id %}"></a>
+        {{car.made_by}}</li>
+    {%endfor%}
+
+</ul>
+
+
+<p> Today's time is: {{ current_time }}</p>
+ {%endblock%}

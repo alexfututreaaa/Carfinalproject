@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+
+</head>
+    <h1> My Car Header</h1>
+    {% block content%}{%endblock%}
+    <nav>
+        <div>
+            <a href="{% url 'car-home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'cars'%}">Add car</a>
+            <form action = "{% url 'logout' %}" method="post">
+                {% csrf_token% }
+                <button type="submit">Logout</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}"> Login</a>
+             <a href="{% url 'register' %}"> Register</a>
+            {% endif %}
+        </div>
+    </nav>
+    <p>Website Footer</p>
+</body>
+</html>
